@@ -1,16 +1,64 @@
 package org.example
 
+import kotlin.system.exitProcess
+import java.lang.System.exit
+
 //TIP To <b>Run</b> code, press <shortcut actionId="Run"/> or
 // click the <icon src="AllIcons.Actions.Execute"/> icon in the gutter.
 fun main() {
-    val name = "Kotlin"
-    //TIP Press <shortcut actionId="ShowIntentionActions"/> with your caret at the highlighted text
-    // to see how IntelliJ IDEA suggests fixing it.
-    println("Hello, " + name + "!")
+    runMenu()
 
-    for (i in 1..5) {
-        //TIP Press <shortcut actionId="Debug"/> to start debugging your code. We have set one <icon src="AllIcons.Debugger.Db_set_breakpoint"/> breakpoint
-        // for you, but you can always add more by pressing <shortcut actionId="ToggleLineBreakpoint"/>.
-        println("i = $i")
-    }
+    
+}
+
+fun mainMenu() : Int {
+    println("")
+    println("--------------------")
+    println("Book KEEPER APP")
+    println("--------------------")
+    println("book MENU")
+    println("  1) Add a book")
+    println("  2) List all book")
+    println("  3) Update a book")
+    println("  4) Delete a book")
+    println("--------------------")
+    println("  0) Exit")
+    println("--------------------")
+    print("==>> ")
+    return readlnOrNull()?.toIntOrNull() ?: -1
+}
+
+fun runMenu() {
+    do {
+        val option = mainMenu()
+        when (option) {
+            1  -> addbook()
+            2  -> listbooks()
+            3  -> updatebook()
+            4  -> deletebook()
+            0  -> exitApp()
+            else -> println("Invalid option entered: " + option)
+        }
+    } while (true)
+}
+
+fun exitApp() {
+    println("Goodbye!")
+    exitProcess(0)
+}
+
+fun addbook(){
+    println("You chose Add book")
+}
+
+fun listbooks(){
+    println("You chose List books")
+}
+
+fun updatebook(){
+    println("You chose Update book")
+}
+
+fun deletebook(){
+    println("You chose Delete book")
 }
